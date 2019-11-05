@@ -1,0 +1,25 @@
+private bool CheckStartStopOk(Point pt, int diam)
+        {
+            bool ok = true;
+
+            foreach (Figure fig in figures)
+            {
+
+                for (int x = pt.x - diam / 2; x <= pt.x + diam / 2; x++)
+                {
+                    for (int y = pt.y - diam / 2; y <= pt.y + diam / 2; y++)
+                    {
+                        if (fig.CheckIfPointIsInsideFigure(new Point(x, y)) == true)
+                        {
+                            //start/stop point overlaps the figure
+                            ok = false;
+                            break;
+                        }
+                    }
+                }
+
+           
+
+
+            return ok;
+        }

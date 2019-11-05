@@ -1,0 +1,31 @@
+private void FillFigure(List <Point> points)
+        {
+          
+
+            System.Drawing.Point[] pct = new System.Drawing.Point[3];
+            for (int j = 0; j < points.Count(); j++)
+            {
+                if (j + 2 < points.Count)
+                {
+                    pct[0] = new System.Drawing.Point(points[j].x, points[j].y);
+                    pct[1] = new System.Drawing.Point(points[j + 1].x, points[j + 1].y);
+                    pct[2] = new System.Drawing.Point(points[j + 2].x, points[j + 2].y);                
+                }
+                else if (j + 1 < points.Count())
+                {
+                    pct[0] = new System.Drawing.Point(points[j].x, points[j].y);
+                    pct[1] = new System.Drawing.Point(points[j + 1].x, points[j + 1].y);
+                    pct[2] = new System.Drawing.Point(points[0].x, points[0].y);
+                }
+                else  //j+1 >= points.Count()
+                {
+                    pct[0] = new System.Drawing.Point(points[j].x, points[j].y);
+                    pct[1] = new System.Drawing.Point(points[0].x, points[0].y);
+                    pct[2] = new System.Drawing.Point(points[1].x, points[1].y);
+                }
+                graphics.FillPolygon((Brush)b, pct);
+            }
+             
+          
+        }
+                

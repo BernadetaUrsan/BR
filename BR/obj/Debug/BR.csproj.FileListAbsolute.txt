@@ -1,0 +1,97 @@
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\bin\Debug\BR.exe.config
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\bin\Debug\BR.exe
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\bin\Debug\BR.pdb
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\obj\Debug\BR.Form1.resources
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\obj\Debug\BR.Properties.Resources.resources
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\obj\Debug\BR.csproj.GenerateResource.Cache
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\obj\Debug\BR.exe
+c:\users\vatavu\documents\visual studio 2012\Projects\BR\BR\obj\Debug\BR.pdb
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\bin\Debug\BR.exe.config
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\obj\Debug\BR.exe
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\obj\Debug\BR.pdb
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\bin\Debug\BR.exe
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\bin\Debug\BR.pdb
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\obj\Debug\BR.Form1.resources
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Geanina\Desktop\Poli\.An 4\br\BR update 1_criss2\BR\obj\Debug\BR.csproj.GenerateResource.Cache
+E:\Poli\An4\BR\BR update 1_criss2\BR\bin\Debug\BR.exe.config
+E:\Poli\An4\BR\BR update 1_criss2\BR\bin\Debug\BR.exe
+E:\Poli\An4\BR\BR update 1_criss2\BR\bin\Debug\BR.pdb
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.Form1.resources
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.Properties.Resources.resources
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.csproj.GenerateResource.Cache
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.exe
+E:\Poli\An4\BR\BR update 1_criss2\BR\obj\Debug\BR.pdb
+E:\Poli\aAn4\br\BR update 1_criss2\BR\bin\Debug\BR.exe.config
+E:\Poli\aAn4\br\BR update 1_criss2\BR\bin\Debug\BR.exe
+E:\Poli\aAn4\br\BR update 1_criss2\BR\bin\Debug\BR.pdb
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.Form1.resources
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.Properties.Resources.resources
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.csproj.GenerateResource.Cache
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.exe
+E:\Poli\aAn4\br\BR update 1_criss2\BR\obj\Debug\BR.pdb
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\bin\Debug\BR.exe.config
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\bin\Debug\BR.exe
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\bin\Debug\BR.pdb
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.Form1.resources
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.Properties.Resources.resources
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.csproj.GenerateResource.Cache
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.exe
+E:\Poli\aAn4\br\BR\BR update 1_criss2\BR\obj\Debug\BR.pdb
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\bin\Debug\BR.exe.config
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\bin\Debug\BR.exe
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\bin\Debug\BR.pdb
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.Form1.resources
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.csproj.GenerateResource.cache
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.exe
+C:\Users\Florin\Desktop\BR update 1_criss2\BR\obj\Debug\BR.pdb
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\bin\Debug\BR.exe.config
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\bin\Debug\BR.exe
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\bin\Debug\BR.pdb
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.Form1.resources
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.csproj.GenerateResource.cache
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.exe
+C:\Users\Adam KISS\Desktop\BR\BR update 1_criss2\BR\obj\Debug\BR.pdb
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\bin\Debug\BR.exe.config
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\bin\Debug\BR.exe
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\obj\Debug\BR.csprojResolveAssemblyReference.cache
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\obj\Debug\BR.Form1.resources
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\obj\Debug\BR.csproj.GenerateResource.cache
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\obj\Debug\BR.exe
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\obj\Debug\BR.pdb
+C:\Users\Adam KISS\Desktop\BR\BR update 1_a_c2\BR\bin\Debug\BR.pdb
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\bin\Debug\BR.exe.config
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\bin\Debug\BR.exe
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\bin\Debug\BR.pdb
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.csprojAssemblyReference.cache
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.Form1.resources
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.csproj.GenerateResource.cache
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.exe
+C:\Users\Berna\Desktop\BR update 1_a_c2\BR update 1_a_c2\BR\obj\Debug\BR.pdb
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\bin\Debug\BR.exe.config
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\bin\Debug\BR.exe
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\bin\Debug\BR.pdb
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.csprojAssemblyReference.cache
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.Form1.resources
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.csproj.GenerateResource.cache
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.exe
+C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.pdb
