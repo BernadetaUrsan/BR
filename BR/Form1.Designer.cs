@@ -53,6 +53,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.pctDesen = new System.Windows.Forms.PictureBox();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctDesen)).BeginInit();
             this.SuspendLayout();
@@ -73,16 +74,17 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSeparator5,
-            this.toolStripButton4,
             this.toolStripLabel1,
             this.patrat,
-            this.toolStripButton5,
-            this.toolStripSeparator6,
-            this.toolStripButton1,
             this.toolStripLabel2,
             this.deepnessLevelText,
-            this.descOmogena,
+            this.toolStripSeparator6,
+            this.toolStripButton4,
+            this.toolStripButton5,
             this.toolStripSeparator7,
+            this.toolStripButton1,
+            this.descOmogena,
+            this.toolStripSeparator8,
             this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -187,7 +189,7 @@
             this.toolStripButton4.Size = new System.Drawing.Size(58, 53);
             this.toolStripButton4.Text = "Omogen";
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-//            this.toolStripButton4.Click += new System.EventHandler(this.descOmogena_Click_1);
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripLabel1
             // 
@@ -201,7 +203,6 @@
             this.patrat.MaxLength = 4;
             this.patrat.Name = "patrat";
             this.patrat.Size = new System.Drawing.Size(30, 56);
- //           this.patrat.Click += new System.EventHandler(this.patrat_Click);
             // 
             // toolStripButton5
             // 
@@ -211,7 +212,7 @@
             this.toolStripButton5.Size = new System.Drawing.Size(35, 53);
             this.toolStripButton5.Text = "Start";
             this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
- //           this.toolStripButton5.Click += new System.EventHandler(this.startRobot_Click);
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripSeparator6
             // 
@@ -227,14 +228,14 @@
             this.toolStripButton1.Size = new System.Drawing.Size(71, 53);
             this.toolStripButton1.Text = "Neomogen";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-//            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(55, 53);
-            this.toolStripLabel2.Text = "Precision";
+            this.toolStripLabel2.Size = new System.Drawing.Size(84, 53);
+            this.toolStripLabel2.Text = "DeepnessLevel";
             // 
             // deepnessLevelText
             // 
@@ -250,7 +251,7 @@
             this.descOmogena.Size = new System.Drawing.Size(35, 53);
             this.descOmogena.Text = "Start";
             this.descOmogena.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-//            this.descOmogena.Click += new System.EventHandler(this.descOmogena_Click);
+            this.descOmogena.Click += new System.EventHandler(this.descOmogena_Click);
             // 
             // toolStripSeparator7
             // 
@@ -275,6 +276,11 @@
             this.pctDesen.TabIndex = 2;
             this.pctDesen.TabStop = false;
             this.pctDesen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pctDesenare_MouseDown);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 56);
             // 
             // Form1
             // 
@@ -310,7 +316,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripTextBox deepnessLevelText;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
@@ -324,6 +329,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        public System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
     }
 }
 

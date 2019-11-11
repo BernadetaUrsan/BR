@@ -95,3 +95,13 @@ C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.csproj.Generate
 C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
 C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.exe
 C:\Users\Berna\Desktop\BR update 1_a_c2\BRfiguri\BR\obj\Debug\BR.pdb
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\bin\Debug\BR.exe.config
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\bin\Debug\BR.exe
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\bin\Debug\BR.pdb
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.csprojAssemblyReference.cache
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.Form1.resources
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.Properties.Resources.resources
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.csproj.GenerateResource.cache
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.csproj.CoreCompileInputs.cache
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.exe
+C:\Users\Szandy\Desktop\brrrrr\BRfiguri\BR\obj\Debug\BR.pdb

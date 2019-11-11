@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace BR
 {
 
     public partial class Form1 : Form
     {
+
         Bitmap btmDesen; //pentru desenarea cu pixeli
         Graphics graphics;
         Pen pen;
@@ -26,27 +26,22 @@ namespace BR
         bool ClickDrawPoints;
         bool ClickStartPoint;
         bool ClickStopPoint;
-        bool Move;
         bool StartPointExists;
         bool StopPointExists;
-        int v = 0;
         int StartStopPointDiam;
         int startPx;
         int startPy;
         int stopPx;
         int stopPy;
+        int v = 0;
         int numOfCells = 0;
         float cellSizeHorizontal = 0f;
         float cellSizeVertical = 0f;
         int[,] matrix = new int[100, 100];
-
-     
+        //Pentru grid
         Dreptunghi[,] matrixDreptunghi;
         List<Dreptunghi> dreptunghis;
-        bool[,] visited;
-        Queue<queueNode> q = new Queue<queueNode>();
-
-        DreptunghiNeomogen[,] mainMatrixDreptunghiNeomogen;
+        //pentru metoda neomogena
         DreptunghiNeomogen mainDreptunghiNeomogen;
         int deepnessLevel;
         int newNumOfCells;
@@ -57,8 +52,7 @@ namespace BR
 
             lines = new List<Line>();
             points = new List<Point>();
-            figures = new List<Figure>(); 
-                                         
+            figures = new List<Figure>();                               
             pen = new Pen(Color.SkyBlue, 2);
             StartStopPointDiam = 20;
             done = false;
@@ -108,6 +102,7 @@ namespace BR
             graphics.FillRectangle(new SolidBrush(color), dreptunghi.SusStangaX, dreptunghi.SusStangaY, dreptunghi.width, dreptunghi.height);
             pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
         }
+
         private void drawStartPoint() //seteaza punctul de start printr-un cerc folosind brush
         {
             pen.Color = Color.Green;
@@ -115,6 +110,7 @@ namespace BR
             //cu w = 20, h =20, e da poz mouse-ului
             pctDesen.Image = btmDesen;
         }
+
         private void drawStopPoint() //seteaza punctul de stop printr-un cerc folosind brush
         {
             pen.Color = Color.Crimson;
@@ -223,7 +219,6 @@ namespace BR
             }
         }
         
-
         private void btnNew_Click(object sender, EventArgs e) // se vrea creerea unui nou obiect
         {// asa ca se pune done/add pe 0 si 
             done = false;
@@ -275,25 +270,19 @@ namespace BR
 
         }
 
-
         private void btnClear_Click(object sender, EventArgs e) // se apasa butonul de delete map
         {
 
-
             graphics.Clear(Color.White);  //modificare
             pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
-
             points.Clear();
             lines.Clear();
             figures.Clear();
             StartPointExists = false;
             StopPointExists = false;
-
             done = false;
             // se sterge tot, nu mai exista puncte de start/stop sau figuri si se face ecranul alb
         }
-
-
 
         private void stopPoint_Click(object sender, EventArgs e)
         {
@@ -326,7 +315,6 @@ namespace BR
                 pct[i] = new System.Drawing.Point(p.x, p.y);
                 i++;
             }
-
             graphics.FillPolygon((Brush)b, pct); // metoda
             pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
         }
@@ -339,64 +327,7 @@ namespace BR
             pctDesen.Image = btmDesen;
         }
 
-        //  de aici incepe
-
-         private bool CheckStartStopOk(Point pt, int diam)
-         {
-             bool ok = true;
-
-             for (int x = pt.x - diam / 2; x <= pt.x + diam / 2; x++)
-             {  //mergi pe x cu diam/2 in st si cu diam/2 in dr pct
-                 for (int y = pt.y - diam / 2; y <= pt.y + diam / 2; y++)
-                 {
-                     //mergi pe y cu diam/2 in sus si cu diam/2 in josul pct
-
-                     if (CheckIfPointIsInsideFigure(new Point(x, y)) == true)
-                     {
-                         ok = false;
-                     }
-
-                 }
-             }
-
-             return ok;
-         }
-         
-
-
-        
-         private bool CheckIfPointIsInsideFigure(Point p)
-        {
-            bool inFigure = false;
-            Color pixColor = btmDesen.GetPixel(p.x, p.y);
-            /*
-            if (pixColor.A == 255 && pixColor.B == 0 && pixColor.G == 0)//black
-            {
-                inFigure = true;
-            }
-            else if (pixColor.A == 255 && pixColor.B == 255 && pixColor.G == 255)//white
-            {
-                //inFigure = false;
-            }
-
-            */
-            //PROPUN SA FACEM ASA:   
-            
-            if(pixColor.A==255 && pixColor.B==255 && pixColor.G==255) // verifica daca spatiul in care se afla punctul este alb
-            {
-                inFigure = false; // deci e ok, nu e in interiorul figurii
-            }
-            else  // daca spatiul are o alta culoare (in cazul nostru, turcoaz sau ce e, nu e ok, punctul este in forma
-            {
-                inFigure = true;
-            }                                    // BERNA
-            
-
-            return inFigure; // returneaza starea puncutului
-        }
-         
-
-        
+        //desenam gridul
         private void drawLines()
         {
             Pen p = new Pen(Color.Gray);
@@ -408,19 +339,17 @@ namespace BR
                 graphics.DrawLine(p, (int)(i * cellSizeHorizontal), 0, (int)(i * cellSizeHorizontal), (int)(numOfCells * cellSizeVertical));
             }
         }
-        
 
-        
-         private bool doesLineEnterDreptunghi(Line line, Dreptunghi dreptunghi)
+        private bool doesLineEnterDreptunghi(Line line, Dreptunghi dreptunghi)
         {
-            List<Line> dreptunghiLines = new List<Line>(); // nu e ok sa se tot creeze atatea dreptunghiuri
+            List<Line> dreptunghiLines = new List<Line>();
             dreptunghiLines.Add(new Line(new Point(dreptunghi.SusStangaX, dreptunghi.SusStangaY), new Point(dreptunghi.SusStangaX + dreptunghi.width, dreptunghi.SusStangaY)));
             dreptunghiLines.Add(new Line(new Point(dreptunghi.SusStangaX, dreptunghi.SusStangaY), new Point(dreptunghi.SusStangaX, dreptunghi.SusStangaY + dreptunghi.height)));
             dreptunghiLines.Add(new Line(new Point(dreptunghi.SusStangaX, dreptunghi.SusStangaY + dreptunghi.height), new Point(dreptunghi.SusStangaX + dreptunghi.width, dreptunghi.SusStangaY + dreptunghi.height)));
             dreptunghiLines.Add(new Line(new Point(dreptunghi.SusStangaX + dreptunghi.width, dreptunghi.SusStangaY), new Point(dreptunghi.SusStangaX + dreptunghi.width, dreptunghi.SusStangaY + dreptunghi.height)));
             bool entered = false;
 
-            if (line.p1.x >= dreptunghi.SusStangaX && line.p1.x  <= (dreptunghi.SusStangaX + dreptunghi.width) && line.p2.x >= dreptunghi.SusStangaX && line.p2.x <= (dreptunghi.SusStangaX + dreptunghi.width))
+            if (line.p1.x >= dreptunghi.SusStangaX && line.p1.x <= (dreptunghi.SusStangaX + dreptunghi.width) && line.p2.x >= dreptunghi.SusStangaX && line.p2.x <= (dreptunghi.SusStangaX + dreptunghi.width))
             {
                 if (line.p1.y >= dreptunghi.SusStangaY && line.p1.y <= (dreptunghi.SusStangaY + dreptunghi.height) && line.p2.y >= dreptunghi.SusStangaY && line.p2.y <= (dreptunghi.SusStangaY + dreptunghi.height))
                 {
@@ -471,85 +400,26 @@ namespace BR
                     }
                 }
             });
+
             return entered;
         }
 
-        private void desc_OmogenaTest()
+        private void LogMatrice()
         {
-            int numOfCells = (int)Math.Pow(this.numOfCells, this.deepnessLevel + 1);
-            this.newNumOfCells = numOfCells;
-            matrix = new int[numOfCells, numOfCells];
-            matrixDreptunghi = new Dreptunghi[numOfCells, numOfCells];
-            dreptunghis = new List<Dreptunghi>();
-
-            cellSizeHorizontal = (float)pctDesen.Width / numOfCells;
-            cellSizeVertical = (float)pctDesen.Height / numOfCells;
-
-            //Pen p = new Pen(Color.Gray);
-
             for (int i = 0; i < numOfCells; i++)
             {
-                //orizontal
-                //graphics.DrawLine(p, 0, (int)(i * cellSizeVertical), (int)(numOfCells * cellSizeHorizontal), (int)(i * cellSizeVertical));
-                //vertical
-                // graphics.DrawLine(p, (int)(i * cellSizeHorizontal), 0, (int)(i * cellSizeHorizontal), (int)(numOfCells * cellSizeVertical));
                 for (int j = 0; j < numOfCells; j++)
                 {
-                    Dreptunghi dreptunghi = new Dreptunghi();
-                    dreptunghi.SusStanga = new System.Drawing.Point((int)(j * cellSizeHorizontal), (int)(i * cellSizeVertical));
-                    dreptunghi.SusDreapta = new System.Drawing.Point((int)(j * 2 * cellSizeHorizontal), (int)(i * cellSizeVertical));
-                    dreptunghi.JosStanga = new System.Drawing.Point((int)(j * cellSizeHorizontal), (int)(i * 2 * cellSizeVertical));
-                    dreptunghi.JosDreapta = new System.Drawing.Point((int)(j * 2 * cellSizeHorizontal), (int)(i * 2 * cellSizeVertical));
-                    dreptunghi.SusStangaX = (int)(j * cellSizeHorizontal);
-                    dreptunghi.SusStangaY = (int)(i * cellSizeVertical);
-                    dreptunghi.width = (int)cellSizeHorizontal;
-                    dreptunghi.height = (int)cellSizeVertical;
-                    dreptunghi.indexIMatrice = i;
-                    dreptunghi.indexJMatrice = j;
-                    dreptunghis.Add(dreptunghi);
-                    matrixDreptunghi[i, j] = dreptunghi;
-                    matrix[i, j] = 1;
+                    Console.Write(matrix[i, j]);
                 }
+                Console.WriteLine();
             }
-
-            LogMatrice();
-
-            //pctDesen.Image = btmDesen;
-            v++;
-
-            figures.ForEach(figure =>
-            {
-                figure.lines.ForEach(line =>
-                {
-                    dreptunghis.ForEach(
-                        dreptunghi =>
-                        {
-                            if (doesLineEnterDreptunghi(line, dreptunghi))
-                            {
-                                matrix[dreptunghi.indexIMatrice, dreptunghi.indexJMatrice] = -1;
-                            }
-                        });
-                });
-            });
-
-            //for (int i = 0; i < numOfCells; i++)
-            //{
-            //    //orizontal
-            //    graphics.DrawLine(p, 0, (int)(i * cellSizeVertical), (int)(numOfCells * cellSizeHorizontal), (int)(i * cellSizeVertical));
-            //    //vertical
-            //    graphics.DrawLine(p, (int)(i * cellSizeHorizontal), 0, (int)(i * cellSizeHorizontal), (int)(numOfCells * cellSizeVertical));
-            //}
-
-            //figures.ForEach(figure =>
-            //{
-            //    FillFigure(figure.points);
-            //});
-            LogMatrice();
         }
 
-        private void descOmogena_Click_1(object sender, EventArgs e)
+        //metoda omogena
+        private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            if (v != 0)         // in cazul in care a mai fost facut odata descompunerea, stergem grid-ul 
+            if (v != 0) // in cazul in care a mai fost facut odata descompunerea, stergem grid-ul 
             {
                 graphics.Clear(Color.White);
                 pctDesen.Image = btmDesen;
@@ -561,18 +431,13 @@ namespace BR
                 matrix = new int[numOfCells, numOfCells];
                 matrixDreptunghi = new Dreptunghi[numOfCells, numOfCells];
                 dreptunghis = new List<Dreptunghi>();
-
                 cellSizeHorizontal = (float)pctDesen.Width / numOfCells;
                 cellSizeVertical = (float)pctDesen.Height / numOfCells;
-
                 Pen p = new Pen(Color.Gray);
 
                 for (int i = 0; i < numOfCells; i++)
                 {
                     //orizontal
-                    //graphics.DrawLine(p, 0, (int)(i * cellSizeVertical), (int)(numOfCells * cellSizeHorizontal), (int)(i * cellSizeVertical));
-                    //vertical
-                    // graphics.DrawLine(p, (int)(i * cellSizeHorizontal), 0, (int)(i * cellSizeHorizontal), (int)(numOfCells * cellSizeVertical));
                     for (int j = 0; j < numOfCells; j++)
                     {
                         Dreptunghi dreptunghi = new Dreptunghi();
@@ -591,7 +456,8 @@ namespace BR
                         matrix[i, j] = 1;
                     }
                 }
-
+                //MATRIX INITIAL
+                Console.WriteLine("MATRIX INITIAL");
                 LogMatrice();
 
                 pctDesen.Image = btmDesen;
@@ -606,7 +472,7 @@ namespace BR
                             {
                                 if (doesLineEnterDreptunghi(line, dreptunghi))
                                 {
-                                    graphics.FillRectangle(new SolidBrush(Color.Turquoise), dreptunghi.SusStangaX, dreptunghi.SusStangaY, dreptunghi.width, dreptunghi.height);
+                                    graphics.FillRectangle(new SolidBrush(Color.CadetBlue), dreptunghi.SusStangaX, dreptunghi.SusStangaY, dreptunghi.width, dreptunghi.height);
                                     pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
                                     matrix[dreptunghi.indexIMatrice, dreptunghi.indexJMatrice] = -1;
                                 }
@@ -626,6 +492,9 @@ namespace BR
                 {
                     FillFigure(figure.points);
                 });
+
+                //MATRIX DUPA METODA
+                Console.WriteLine("MATRIX DUPA OMOGEN");
                 LogMatrice();
             }
 
@@ -634,230 +503,9 @@ namespace BR
                 MessageBox.Show("Please insert a valid number of square.");
             }
 
-
         }
 
-        DreptunghiNeomogen whichDreptunghiSeAflaNeomogen(Point point, DreptunghiNeomogen ownerDreptunghi)
-        {
-            foreach (DreptunghiNeomogen dreptunghi in ownerDreptunghi.childDreptunghisList)
-                if (dreptunghi.SusStangaX <= point.x)
-                    if ((dreptunghi.SusStangaX + dreptunghi.width) >= point.x)
-                        if (dreptunghi.SusStangaY <= point.y)
-                            if ((dreptunghi.SusStangaY + dreptunghi.height) >= point.y)
-                                return dreptunghi;
-            return null;
-        }
-
-        Dreptunghi whichDreptunghiSeAfla(Point point)
-        {
-            foreach (Dreptunghi dreptunghi in dreptunghis)
-                if (dreptunghi.SusStangaX <= point.x)
-                    if ((dreptunghi.SusStangaX + dreptunghi.width) >= point.x)
-                        if (dreptunghi.SusStangaY <= point.y)
-                            if ((dreptunghi.SusStangaY + dreptunghi.height) >= point.y)
-                                return dreptunghi;
-            return null;
-        }
-
-        DreptunghiNeomogen whichDreptunghiSeAflaNeomogenRecursiv(Point point, DreptunghiNeomogen dreptunghiNeomogen)
-        {
-            DreptunghiNeomogen temp = null;
-            if (dreptunghiNeomogen.childDreptunghisList != null)
-                foreach (DreptunghiNeomogen dreptunghi in dreptunghiNeomogen.childDreptunghisList)
-                {
-                    temp = whichDreptunghiSeAflaNeomogenRecursiv(point, dreptunghi);
-                    if (temp != null)
-                        break;
-                }
-
-            if (temp == null)
-            {
-                if (dreptunghiNeomogen.SusStangaX <= point.x)
-                    if ((dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width) >= point.x)
-                        if (dreptunghiNeomogen.SusStangaY <= point.y)
-                            if ((dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height) >= point.y)
-                                temp = dreptunghiNeomogen;
-            }
-
-            return temp;
-        }
-
-        struct queueNode  // coada cu punctele puse dintr-o figura 
-        {
-            public Point pt;  // coordonatele unui punct 
-            public int dist;  // distanta de la sursa la punct
-        };
-
-        int[] rowNum = { -1, 0, 0, 1 };
-
-        int[] colNum = { 0, -1, 1, 0 };
-
-        int BFS(Point src, Point dest)
-        {
-
-            visited = new bool[numOfCells, numOfCells];
-            for (int i = 0; i < numOfCells; i++)
-                for (int j = 0; j < numOfCells; j++)
-                    visited[i, j] = false;
-
-            // Mark the source cell as visited 
-            visited[src.x, src.y] = true;
-
-            // Create a queue for BFS 
-            q = new Queue<queueNode>();
-
-            // distance of source cell is 0 
-            queueNode s;
-            s.pt = src;
-            s.dist = 0;
-
-            q.Enqueue(s);  // Enqueue source cell 
-
-            // Do a BFS starting from source cell 
-            while (q.Count != 0)
-            {
-                queueNode curr = q.Peek();
-                Point pt = curr.pt;
-
-                // If we have reached the destination cell, 
-                // we are done 
-                if (pt.x == dest.x && pt.y == dest.y)
-                    return curr.dist;
-
-                // Otherwise dequeue the front cell in the queue 
-                // and enqueue its adjacent cells 
-                q.Dequeue();
-
-                for (int i = 0; i < 4; i++)
-                {
-                    int row = pt.x + rowNum[i];
-                    int col = pt.y + colNum[i];
-
-                    // if adjacent cell is valid, has path and 
-                    // not visited yet, enqueue it. 
-                    if (isValid(row, col) && matrix[row, col] == 0 &&
-                       !visited[row, col])
-                    {
-                        // mark cell as visited and enqueue it 
-                        visited[row, col] = true;
-                        queueNode Adjcell;
-                        Adjcell.pt = new Point(row, col);
-                        Adjcell.dist = curr.dist + 1;
-                        q.Enqueue(Adjcell);
-                    }
-                }
-            }
-
-            //return -1 if destination cannot be reached 
-            return -1;
-        }
-
-        bool isValid(int row, int col)
-        {
-            // return true if row number and column number 
-            // is in range 
-            return (row >= 0) && (row < numOfCells) &&
-                   (col >= 0) && (col < numOfCells);
-        }
-
-        private void LogMatrice()
-        {
-            for (int i = 0; i < numOfCells; i++)
-            {
-                for (int j = 0; j < numOfCells; j++)
-                {
-                    //Console.Write(matrix[i, j]);
-                }
-                Console.WriteLine();
-            }
-        }
-
-        private void startRobot_Click(object sender, EventArgs e)
-        {
-            Dreptunghi startDreptunghi = whichDreptunghiSeAfla(StartPoint);
-            Dreptunghi endDreptunghi = whichDreptunghiSeAfla(StopPoint);
-
-            List<Point> list = BR.MainClass.GO(null, numOfCells, matrix, new Point(startDreptunghi.indexIMatrice, startDreptunghi.indexJMatrice), new Point(endDreptunghi.indexIMatrice, endDreptunghi.indexJMatrice));
-
-
-            foreach (Point point in list)
-            {
-                colorDreptunghi(matrixDreptunghi[point.x, point.y], Color.Gold);
-
-            }
-            drawLines();
-            figures.ForEach(figure =>
-            {
-                FillFigure(figure.points);
-            }
-                );
-            drawStartPoint();
-            drawStopPoint();
-            //colorDreptunghi(whichDreptunghiSeAfla(StartPoint), Color.BlanchedAlmond);
-            //colorDreptunghi(whichDreptunghiSeAfla(StopPoint), Color.BlueViolet);
-            // MessageBox.Show(BFS(StartPoint,StopPoint).ToString());
-        }
-
-        private void drawLinesForDreptunghi(DreptunghiNeomogen dreptunghiMainNeomogen)
-        {
-            Pen p = new Pen(Color.Red);
-
-            dreptunghiMainNeomogen.childDreptunghisList.ForEach(dreptunghiNeomogen =>
-           {
-               graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY);
-               pctDesen.Image = btmDesen;
-               graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
-               pctDesen.Image = btmDesen;
-               graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
-               pctDesen.Image = btmDesen;
-               graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
-               pctDesen.Image = btmDesen;
-           });
-
-        }
-
-        private void drawLinesForDreptunghiAndChildrenRecursively(DreptunghiNeomogen dreptunghiNeomogen)
-        {
-            Pen p = new Pen(Color.Red);
-            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY);
-            pctDesen.Image = btmDesen;
-            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
-            pctDesen.Image = btmDesen;
-            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
-            pctDesen.Image = btmDesen;
-            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
-            pctDesen.Image = btmDesen;
-            if (dreptunghiNeomogen.childDreptunghisList != null)
-            {
-                dreptunghiNeomogen.childDreptunghisList.ForEach(childDreptunghi =>
-               {
-                   drawLinesForDreptunghiAndChildrenRecursively(childDreptunghi);
-               });
-            }
-
-        }
-
-        private void fillRectanglesRecursively(DreptunghiNeomogen dreptunghiNeomogen)
-        {
-
-            for (int i = 0; i < numOfCells; i++)
-                for (int j = 0; j < numOfCells; j++)
-                {
-                    if (dreptunghiNeomogen.childDreptunghisPresenceMatrix[i, j] == -1)
-                    {
-                        if (dreptunghiNeomogen.childDreptunghis[i, j].childDreptunghisList == null)
-                        {
-                            graphics.FillRectangle(new SolidBrush(Color.Turquoise), dreptunghiNeomogen.childDreptunghis[i, j].SusStangaX, dreptunghiNeomogen.childDreptunghis[i, j].SusStangaY, dreptunghiNeomogen.childDreptunghis[i, j].width, dreptunghiNeomogen.childDreptunghis[i, j].height);
-                            pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
-                        }
-                        else
-                        {
-                            fillRectanglesRecursively(dreptunghiNeomogen.childDreptunghis[i, j]);
-                        }
-                    }
-                }
-        }
-
+        //neomogen
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             if (v != 0)         // in cazul in care a mai fost facut odata descompunerea, stergem grid-ul 
@@ -898,6 +546,7 @@ namespace BR
             {
                 MessageBox.Show("Please insert a valid number of square.");
             }
+
         }
 
         private void completeDreptunghiNeomogenMatricesRecursively(Line line, DreptunghiNeomogen dreptunghiNeomogen, int deepnessLimit)
@@ -917,53 +566,84 @@ namespace BR
             });
         }
 
-        private void applyAStarNeomogen(DreptunghiNeomogen ownerDreptunghi, Point startPointCoordinate, Point endPointCoordinate)
+        private void fillRectanglesRecursively(DreptunghiNeomogen dreptunghiNeomogen)
         {
-            DreptunghiNeomogen startDreptunghi = whichDreptunghiSeAflaNeomogen(startPointCoordinate, ownerDreptunghi);
-            DreptunghiNeomogen endDreptunghi = whichDreptunghiSeAflaNeomogen(endPointCoordinate, ownerDreptunghi);
+            for (int i = 0; i < numOfCells; i++)
+                for (int j = 0; j < numOfCells; j++)
+                {
+                    if (dreptunghiNeomogen.childDreptunghisPresenceMatrix[i, j] == -1)
+                    {
+                        if (dreptunghiNeomogen.childDreptunghis[i, j].childDreptunghisList == null)
+                        {
+                            graphics.FillRectangle(new SolidBrush(Color.Turquoise), dreptunghiNeomogen.childDreptunghis[i, j].SusStangaX, dreptunghiNeomogen.childDreptunghis[i, j].SusStangaY, dreptunghiNeomogen.childDreptunghis[i, j].width, dreptunghiNeomogen.childDreptunghis[i, j].height);
+                            pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
+                        }
+                        else
+                        {
+                            fillRectanglesRecursively(dreptunghiNeomogen.childDreptunghis[i, j]);
+                        }
+                    }
+                }
+        }
 
-            List<Point> list = BR.MainClass.GO(null, numOfCells, ownerDreptunghi.childDreptunghisPresenceMatrix, new Point(startDreptunghi.indexIMatrice, startDreptunghi.indexJMatrice), new Point(endDreptunghi.indexIMatrice, endDreptunghi.indexJMatrice));
-            List<DreptunghiNeomogen> dreptunghisPathGoingThrough = new List<DreptunghiNeomogen>();
-
-            list.ForEach(point =>
+        private void drawLinesForDreptunghiAndChildrenRecursively(DreptunghiNeomogen dreptunghiNeomogen)
+        {
+            Pen p = new Pen(Color.Red);
+            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY);
+            pctDesen.Image = btmDesen;
+            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
+            pctDesen.Image = btmDesen;
+            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
+            pctDesen.Image = btmDesen;
+            graphics.DrawLine(p, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY, dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width, dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height);
+            pctDesen.Image = btmDesen;
+            if (dreptunghiNeomogen.childDreptunghisList != null)
             {
-                dreptunghisPathGoingThrough.Add(ownerDreptunghi.childDreptunghis[point.x, point.y]);
-            });
-
-            dreptunghisPathGoingThrough.ForEach(dreptunghi =>
-           {
-               //graphics.FillRectangle(new SolidBrush(Color.Gold), dreptunghi.SusStangaX, dreptunghi.SusStangaY, dreptunghi.width, dreptunghi.height);
-               //pctDesen.Image = btmDesen; //vezi modificarea in form (reload)
-           });
-
-            //if()
+                dreptunghiNeomogen.childDreptunghisList.ForEach(childDreptunghi =>
+                {
+                    drawLinesForDreptunghiAndChildrenRecursively(childDreptunghi);
+                });
+            }
 
         }
 
+        //start omogen
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+                Dreptunghi startDreptunghi = whichDreptunghiSeAfla(StartPoint);
+                Dreptunghi endDreptunghi = whichDreptunghiSeAfla(StopPoint);
+                List<Point> list = BR.MainClass.GO(null, numOfCells, matrix, new Point(startDreptunghi.indexIMatrice, startDreptunghi.indexJMatrice), new Point(endDreptunghi.indexIMatrice, endDreptunghi.indexJMatrice));
+
+                foreach (Point point in list)
+                {
+                    colorDreptunghi(matrixDreptunghi[point.x, point.y], Color.Coral);
+
+                }
+                drawLines();
+                figures.ForEach(figure =>
+                {
+                    FillFigure(figure.points);
+                }
+                    );
+                drawStartPoint();
+                drawStopPoint();
+            
+        }
+
+        Dreptunghi whichDreptunghiSeAfla(Point point)
+        {
+            foreach (Dreptunghi dreptunghi in dreptunghis)
+                if (dreptunghi.SusStangaX <= point.x)
+                    if ((dreptunghi.SusStangaX + dreptunghi.width) >= point.x)
+                        if (dreptunghi.SusStangaY <= point.y)
+                            if ((dreptunghi.SusStangaY + dreptunghi.height) >= point.y)
+                                return dreptunghi;
+            return null;
+        }
+
+        //start neomogen
         private void descOmogena_Click(object sender, EventArgs e)
         {
-            //Dreptunghi startDreptunghiMic = whichDreptunghiSeAflaNeomogenRecursiv(StartPoint, mainDreptunghiNeomogen);
-            //Dreptunghi endDreptunghiMic = whichDreptunghiSeAflaNeomogenRecursiv(StopPoint, mainDreptunghiNeomogen);
-
-
-            //Dreptunghi startDreptunghi = whichDreptunghiSeAflaNeomogen(StartPoint, mainDreptunghiNeomogen);
-            //Dreptunghi endDreptunghi = whichDreptunghiSeAflaNeomogen(StopPoint, mainDreptunghiNeomogen);
-
-            //applyAStarNeomogen(mainDreptunghiNeomogen, StartPoint, StopPoint);
-
-            // List<Point> list = BR.MainClass.GO(null, numOfCells, mainDreptunghiNeomogen.childDreptunghisPresenceMatrix, new Point(startDreptunghi.indexIMatrice, startDreptunghi.indexJMatrice), new Point(endDreptunghi.indexIMatrice, endDreptunghi.indexJMatrice));
-
-
-            //drawLinesForDreptunghiAndChildrenRecursively(mainDreptunghiNeomogen);
-            //figures.ForEach(figure =>
-            //    {
-            //        FillFigure(figure.points);
-            //    }
-            //);
-
-
-            //drawStartPoint();
-            //drawStopPoint();
             desc_OmogenaTest();
 
             Dreptunghi startDreptunghi = whichDreptunghiSeAfla(StartPoint);
@@ -971,33 +651,98 @@ namespace BR
 
             List<Point> list = BR.MainClass.GO(null, newNumOfCells, matrix, new Point(startDreptunghi.indexIMatrice, startDreptunghi.indexJMatrice), new Point(endDreptunghi.indexIMatrice, endDreptunghi.indexJMatrice));
 
-
             foreach (Point point in list)
             {
                 Dreptunghi dreptungiTemp = matrixDreptunghi[point.x, point.y];
                 Point mijlocCoordinate = new Point((dreptungiTemp.SusStangaX + 10), (dreptungiTemp.SusStangaY + 10));
                 DreptunghiNeomogen drne = whichDreptunghiSeAflaNeomogenRecursiv(mijlocCoordinate, mainDreptunghiNeomogen);
                 colorDreptunghi(drne, Color.Gold);
-                //colorDreptunghi(dreptungiTemp, Color.Gold);
             }
             drawLinesForDreptunghiAndChildrenRecursively(mainDreptunghiNeomogen);
-
 
             figures.ForEach(figure =>
             {
                 FillFigure(figure.points);
             }
                 );
-            //colorDreptunghi(whichDreptunghiSeAflaNeomogenRecursiv(StartPoint, mainDreptunghiNeomogen), Color.Red);
             drawStartPoint();
             drawStopPoint();
-
-            //colorDreptunghi(startDreptunghi, Color.Gold);
-            //colorDreptunghi(endDreptunghi, Color.Fuchsia);
-            //colorDreptunghi(whichDreptunghiSeAfla(StartPoint), Color.BlanchedAlmond);
-            //colorDreptunghi(whichDreptunghiSeAfla(StopPoint), Color.BlueViolet);
-            // MessageBox.Show(BFS(StartPoint,StopPoint).ToString());
         }
-         
+
+        private void desc_OmogenaTest()
+        {
+            int numOfCells = (int)Math.Pow(this.numOfCells, this.deepnessLevel + 1);
+            this.newNumOfCells = numOfCells;
+            matrix = new int[numOfCells, numOfCells];
+            matrixDreptunghi = new Dreptunghi[numOfCells, numOfCells];
+            dreptunghis = new List<Dreptunghi>();
+            cellSizeHorizontal = (float)pctDesen.Width / numOfCells;
+            cellSizeVertical = (float)pctDesen.Height / numOfCells;
+
+            for (int i = 0; i < numOfCells; i++)
+            {
+                for (int j = 0; j < numOfCells; j++)
+                {
+                    Dreptunghi dreptunghi = new Dreptunghi();
+                    dreptunghi.SusStanga = new System.Drawing.Point((int)(j * cellSizeHorizontal), (int)(i * cellSizeVertical));
+                    dreptunghi.SusDreapta = new System.Drawing.Point((int)(j * 2 * cellSizeHorizontal), (int)(i * cellSizeVertical));
+                    dreptunghi.JosStanga = new System.Drawing.Point((int)(j * cellSizeHorizontal), (int)(i * 2 * cellSizeVertical));
+                    dreptunghi.JosDreapta = new System.Drawing.Point((int)(j * 2 * cellSizeHorizontal), (int)(i * 2 * cellSizeVertical));
+                    dreptunghi.SusStangaX = (int)(j * cellSizeHorizontal);
+                    dreptunghi.SusStangaY = (int)(i * cellSizeVertical);
+                    dreptunghi.width = (int)cellSizeHorizontal;
+                    dreptunghi.height = (int)cellSizeVertical;
+                    dreptunghi.indexIMatrice = i;
+                    dreptunghi.indexJMatrice = j;
+                    dreptunghis.Add(dreptunghi);
+                    matrixDreptunghi[i, j] = dreptunghi;
+                    matrix[i, j] = 1;
+                }
+            }
+
+            LogMatrice();
+            v++;
+
+            figures.ForEach(figure =>
+            {
+                figure.lines.ForEach(line =>
+                {
+                    dreptunghis.ForEach(
+                        dreptunghi =>
+                        {
+                            if (doesLineEnterDreptunghi(line, dreptunghi))
+                            {
+                                matrix[dreptunghi.indexIMatrice, dreptunghi.indexJMatrice] = -1;
+                            }
+                        });
+                });
+            });
+
+            LogMatrice();
+        }
+
+        DreptunghiNeomogen whichDreptunghiSeAflaNeomogenRecursiv(Point point, DreptunghiNeomogen dreptunghiNeomogen)
+        {
+            DreptunghiNeomogen temp = null;
+            if (dreptunghiNeomogen.childDreptunghisList != null)
+                foreach (DreptunghiNeomogen dreptunghi in dreptunghiNeomogen.childDreptunghisList)
+                {
+                    temp = whichDreptunghiSeAflaNeomogenRecursiv(point, dreptunghi);
+                    if (temp != null)
+                        break;
+                }
+
+            if (temp == null)
+            {
+                if (dreptunghiNeomogen.SusStangaX <= point.x)
+                    if ((dreptunghiNeomogen.SusStangaX + dreptunghiNeomogen.width) >= point.x)
+                        if (dreptunghiNeomogen.SusStangaY <= point.y)
+                            if ((dreptunghiNeomogen.SusStangaY + dreptunghiNeomogen.height) >= point.y)
+                                temp = dreptunghiNeomogen;
+            }
+
+            return temp;
+        }
+
     }
 }
