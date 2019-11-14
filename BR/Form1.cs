@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -768,7 +769,11 @@ namespace BR
         {
             // salveaza harta curenta
 
-            File.Copy("abc",Path.Combine(@"C:\Users\Berna\Desktop\BR update 1_a_c2\BR git\BR\BR\SavedMaps\", Path.GetFileName("abc")), true);
+            Bitmap bitmap = new Bitmap(btmDesen.Width,btmDesen.Height);
+            DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+            bitmap.Save(@"C:\Users\Berna\Desktop\BR update 1_a_c2\BR git\BR\BR\SavedMaps\\NewTest.Jpeg", ImageFormat.Jpeg);
+            
+           
             MessageBox.Show("Image file saved successfully!");
         }
     }
