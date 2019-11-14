@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -744,5 +745,31 @@ namespace BR
             return temp;
         }
 
+        private void pctDesen_Click(object sender, EventArgs e)
+        {
+            // harta desenata
+        }
+
+        private void toolStripLabel3_Click(object sender, EventArgs e)
+        {
+            // alegerea unei harti din cele salvate
+
+            OpenFileDialog open = new OpenFileDialog();
+            open.InitialDirectory = @"C:\Users\Berna\Desktop\BR update 1_a_c2\BR git\BR\BR\SavedMaps\";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.png)|*.jpg; *.jpeg; *.png;";
+            
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                pctDesen.Image = new Bitmap(open.FileName);
+            }
+        }
+        
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            // salveaza harta curenta
+
+            File.Copy("abc",Path.Combine(@"C:\Users\Berna\Desktop\BR update 1_a_c2\BR git\BR\BR\SavedMaps\", Path.GetFileName("abc")), true);
+            MessageBox.Show("Image file saved successfully!");
+        }
     }
 }
